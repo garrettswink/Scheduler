@@ -1,6 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+const localeSettings = {};
+dayjs.locale(localeSettings);
+
 $(function () {
 
 // Today's Date & Time
@@ -14,6 +18,36 @@ function currentTime() {
 }
   setInterval(currentTime, 1000);
 });
+
+// Time Block Color Change
+function colorTime () {
+  $('.time-block').each(function() {
+    const blockTime = parseInt(this.id);
+    $(this).toggleClass('past', blockTime < currentTime);
+    $(this).toggleClass('present', blockTime === currentTime);
+    $(this).toggleClass('future', blockTime > currentTime);
+  });
+
+  // Color Refresh
+  function colorRefresh() {
+    $('.time-block').each(function() {
+      const blockTime = parseInt(this.id);
+      if (blockTime == currentTime) {
+        $(this).removeClass('past future').addClass('present');
+      } else if (blockTime < currentTime) {
+        $(this).removeClass('future present').addClass('past');
+      } else {
+        $(this).removeClass('past present').addClass('future');
+      }
+    });
+  }
+
+  colorTime();
+  colorRefresh();
+
+};
+
+
 
 
   
