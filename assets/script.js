@@ -22,38 +22,55 @@ dayjs.locale(localeSettings);
       timeElement.text(currentTime);
     }
 
-  // Toggle
-    function hourlyColor() {
+
+  // Called once to set the color of the blockHour elements based initial load time from currentHour var.
+    function colorTime() {
+  // For each element with a class of time-block...
       $('.time-block').each(function() {
+  // Variable to parse string and return integer on current object
         const blockHour = parseInt(this.id);
+  /*Toggle the class of the current object to past, present of future,
+  using logical operators comparing the current time provided by the
+  currentHour Var to the parsed integer provided by the
+  current object ID, thereby setting the color.*/
         $(this).toggleClass('past', blockHour < currentHour);
         $(this).toggleClass('present', blockHour === currentHour);
         $(this).toggleClass('future', blockHour > currentHour);
       });
     }
-  // The  function below will save the user's input in a textarea to localStorage - only when the corresponding save button has been clicked.
+  
+
+// Updates color/class based on the current time when user saves
+function colorRefresh() {
+      // For each HTML element with a time block class... 
+          $('.time-block').each(function() {
+  // Like the colorTime function, var parses out ID integer...
+            const blockHour = parseInt(this.id);
+  // And compares it to the current time...
+            if (blockHour == currentHour) {
+  // Updating the class to the present class if the values are equal...
+              $(this).removeClass('past future').addClass('present');
+  // Or adjusting the class to past if less than the current time
+            } else if (blockHour < currentHour) {
+              $(this).removeClass('future present').addClass('past');
+  // Or updating the object to the future as the last possible scenario
+            } else {
+              $(this).removeClass('past present').addClass('future');
+            }
+          });
+        }
+
     function textEntry() {
+  // When the save button is clicked...
       $('.saveBtn').on('click', function() {
+    
         const key = $(this).parent().attr('id');
         const value = $(this).siblings('.description').val();
         localStorage.setItem(key, value);
       });
     }
    // Toggle each element with a .time-block to modify class based on time of day
-    function refreshColor() {
-  // For each HTML element with a time block class 
-      $('.time-block').each(function() {
-        
-        const blockHour = parseInt(this.id);
-        if (blockHour == currentHour) {
-          $(this).removeClass('past future').addClass('present');
-        } else if (blockHour < currentHour) {
-          $(this).removeClass('future present').addClass('past');
-        } else {
-          $(this).removeClass('past present').addClass('future');
-        }
-      });
-    }
+   
     // This will get the user input from the localStorage and set textarea values for each time block.
     $('.time-block').each(function() {
       const key = $(this).attr('id');
@@ -61,11 +78,11 @@ dayjs.locale(localeSettings);
       $(this).children('.description').val(value);
     });
   
-    
-    // Call the three main functions to set up the page.
-    hourlyColor();
+  
+    // Call functions
+    colorTime();
     textEntry();                
-    refreshColor();
+    colorRefresh();
     
     // Excute + Update Current Time Every One Second
     setInterval(currentTime, 1000);
