@@ -22,7 +22,7 @@ dayjs.locale(localeSettings);
       timeElement.text(currentTime);
     }
 
-  // Toggle Time Block Color Change Based on Time 
+  // Toggle
     function hourlyColor() {
       $('.time-block').each(function() {
         const blockHour = parseInt(this.id);
@@ -43,7 +43,7 @@ dayjs.locale(localeSettings);
     function refreshColor() {
   // For each HTML element with a time block class 
       $('.time-block').each(function() {
-  
+        
         const blockHour = parseInt(this.id);
         if (blockHour == currentHour) {
           $(this).removeClass('past future').addClass('present');
