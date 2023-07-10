@@ -1,3 +1,4 @@
+// Set default Day.JS locale settings for time + date operations
 const localeSettings = {};
 dayjs.locale(localeSettings);
 
@@ -60,18 +61,20 @@ function colorRefresh() {
           });
         }
 
-    function textEntry() {
-  // When the save button is clicked...
+function textEntry() {
+// When the save button is clicked...
       $('.saveBtn').on('click', function() {
-    
+// Create two variables, key and value. 
+// ID for user input value
         const key = $(this).parent().attr('id');
+// User input value
         const value = $(this).siblings('.description').val();
+// Store  key and value of the object input to local storage
         localStorage.setItem(key, value);
       });
     }
-   // Toggle each element with a .time-block to modify class based on time of day
    
-    // This will get the user input from the localStorage and set textarea values for each time block.
+// Return user input from the localStorage and appending them to the current object
     $('.time-block').each(function() {
       const key = $(this).attr('id');
       const value = localStorage.getItem(key);
