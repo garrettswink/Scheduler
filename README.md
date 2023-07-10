@@ -46,10 +46,6 @@ THEN the saved events persist
 
 ## Live Link + Demo
 
-### Repository 
-
-https://github.com/garrettswink/scheduler.git
-
 ### Live Demo
 
 https://garrettswink.github.io/scheduler/
