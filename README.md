@@ -35,3 +35,7 @@ WHEN I refresh the page
 THEN the saved events persist
 
 ## Live Link + Demo
+Repository: https://github.com/garrettswink/scheduler.git
+Live Demo: https://garrettswink.github.io/scheduler/
+![Scheduler Demo](https://github.com/garrettswink/scheduler/assets/22800055/d2dfd4bc-b3d8-4d0f-943a-20b1cf95f0d0)
+
