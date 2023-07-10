@@ -8,8 +8,10 @@ In writing the Javascript code for this  assignment, I referenced the following 
     - https://www.youtube.com/watch?v=YPU6gOctNvM
 
 My process involved reviewing, reverse engineering, and modifying code blocks with the assistance of JS.Day, Bootstap, and Jquery documentation.
-I have also included heavy documentation for refernce and use in future projects. Likewise, I found commenting the full code flow extremely helpful
-in better understanding JavaScript function syntax, API fetching, and some nascant data manipulation.
+
+I have also included heavy documentation for refernce and use in future projects. Likewise, I found commenting the full code flow extremely helpful in better understanding JavaScript function syntax, API fetching, and some nascant data manipulation.
+
+Lastly, in prepping this for submission, I noticed that the color change function is not working. Considering my tardiness, I want to get this in for an initial evalution; but any hints or tips on how I might troubleshoot resolving this issue would be terrific.
 
 ## Mandatories
 ### User Story
